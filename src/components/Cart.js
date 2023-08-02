@@ -5,7 +5,8 @@ import Modal from "./UI/Modal";
 import classes from "./Cart.module.css";
 
 const Cart = (props) => {
-  const cartCtx = CartContext();
+  const { cartData } = CartContext();
+  const cartCtx = cartData;
 
   console.log(cartCtx.tshirstCartdata);
 

@@ -63,12 +63,29 @@ const Context = (props) => {
     });
   };
 
+  // console.log(upItemlist);
+
+  // const removeTshirt = (item, size) => {
+  //   console.log(item, size);
+  //   setUpItemlist(() => {
+  //     let updateProductList;
+  //     let updateProductqty;
+  //     if (size === "lQuantity") {
+  //       updateProductqty = { ...item, lQuantity: item.lQuantity - 1 };
+  //     }
+  //   });
+  // };
+
+  // const updatedQtyData = {
+  //   updatedQty: removeTshirt,
+  // };
+
   const cartData = {
     tshirstCartdata: cartItems,
     addItem: addItemHandler,
   };
 
-  return <Cart.Provider value={cartData}>{props.children}</Cart.Provider>;
+  return <Cart.Provider value={{ cartData }}>{props.children}</Cart.Provider>;
 };
 
 export default Context;

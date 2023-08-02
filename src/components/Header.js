@@ -5,7 +5,8 @@ import { FaShoppingCart } from "react-icons/fa";
 import { CartContext } from "../context/Context";
 
 const Header = (props) => {
-  const cartCtx = CartContext();
+  const { cartData } = CartContext();
+  const cartCtx = cartData;
 
   return (
     <Navbar

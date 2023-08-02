@@ -3,9 +3,12 @@ import { Button, Col, ListGroup, Row } from "react-bootstrap";
 import { CartContext } from "../context/Context";
 
 const ListItem = (props) => {
-  const cartCtx = CartContext();
+  const { cartData } = CartContext();
+  const cartCtx = cartData;
 
   const lButtonHandler = () => {
+    props.onData(props.item, "lQuantity");
+
     cartCtx.addItem(
       {
         name: props.item.name,
@@ -17,6 +20,7 @@ const ListItem = (props) => {
     );
   };
   const mButtonHandler = () => {
+    props.onData(props.item, "mQuantity");
     cartCtx.addItem(
       {
         name: props.item.name,
@@ -28,6 +32,7 @@ const ListItem = (props) => {
     );
   };
   const sButtonHandler = () => {
+    props.onData(props.item, "sQuantity");
     cartCtx.addItem(
       {
         name: props.item.name,
@@ -40,8 +45,8 @@ const ListItem = (props) => {
   };
 
   return (
-    <ListGroup>
-      <div className="form-control">
+    <ListGroup className="container">
+      <div>
         <ListGroup.Item>
           <Row>
             <Col md={2}>
@@ -54,18 +59,27 @@ const ListItem = (props) => {
               <span>RS.{props.item.price}/-</span>
             </Col>
             <Col md={2}>
-              <Button onClick={lButtonHandler}>
-                Buy Large({props.item.large})
+              <Button
+                disabled={props.item.lQuantity === 0}
+                onClick={lButtonHandler}
+              >
+                Buy Large({props.item.lQuantity})
               </Button>
             </Col>
             <Col md={2}>
-              <Button onClick={mButtonHandler}>
-                Buy Medium({props.item.medium})
+              <Button
+                disabled={props.item.mQuantity === 0}
+                onClick={mButtonHandler}
+              >
+                Buy Medium({props.item.mQuantity})
               </Button>
             </Col>
             <Col md={2}>
-              <Button onClick={sButtonHandler}>
-                Buy Small({props.item.small})
+              <Button
+                disabled={props.item.sQuantity === 0}
+                onClick={sButtonHandler}
+              >
+                Buy Small({props.item.sQuantity})
               </Button>
             </Col>
           </Row>

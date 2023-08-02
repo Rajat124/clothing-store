@@ -15,9 +15,9 @@ const Userdash = (props) => {
       name: name,
       descr: descr,
       price: price,
-      large: large,
-      medium: medium,
-      small: small,
+      lQuantity: large,
+      mQuantity: medium,
+      sQuantity: small,
       id: Math.random().toString(),
     };
 
